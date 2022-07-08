@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include ('./partials/head.ejs') %> 
-<body>
-    <ul id="products">
-        <% if (products.length > 0) { %>         
-            <% products.forEach(element => { %>
-                <%- include ('./partials/product.ejs',element) %> 
-            <% }) %>
-        <% } %>
-    </ul>
+<%- include ('./partials/head.ejs') %>
 
-    <!--
-    <ul>
-        // Step 4
-    </ul>
-    -->
-</body>
+    <body>
+        <ul id="products">
+            <% if (products.length> 0) { %>
+                <% products.forEach(element=> { %>
+                    <%- include ('./partials/product.ejs',element) %>
+                        <% }) %>
+                            <% } %>
+        </ul>
+        <% if (cart.length> 0) { %>
+            <ul id="cart">
+                <% cart.forEach(item=> { %>
+                    <%- include ('./partials/item.ejs',item) %>
+                        <% }) %>
+            </ul>
+            <form action="/checkout/process" method="post">
+                <button type="submit">checkout</button>
+            </form>
+            <% } %>
+    </body>
+
 </html>
